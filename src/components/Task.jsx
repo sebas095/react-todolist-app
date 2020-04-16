@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { keyFrameTask } from "../styles/KeyFrames";
 
 const TaskContainer = styled.div`
   display: grid;
@@ -12,6 +13,7 @@ const TaskContainer = styled.div`
   max-width: 300px;
   margin: 1rem auto;
   border-radius: 5px;
+  animation: ${keyFrameTask} 0.7s ease;
 `;
 
 const TaskButton = styled.button`

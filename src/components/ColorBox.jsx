@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const LabelColor = styled.label`
   display: inline-block;
-  width: 30px;
-  height: 30px;
-  margin-top: 0.5rem;
+  width: 50px;
+  height: 50px;
+  margin-top: 1rem;
   background-color: ${({ color }) => color};
   border-radius: 5px;
   cursor: pointer;

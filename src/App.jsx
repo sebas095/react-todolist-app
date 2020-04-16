@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { createGlobalStyle } from "styled-components";
 import allColors from "./styles/colors";
 import FormTask from "./components/FormTask";
@@ -7,7 +7,8 @@ import { generate as id } from "shortid";
 
 const GlobalStyle = createGlobalStyle`
   body {
-    font-family: sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
     background-color: #222;
     color: ${allColors.mainColor};
     text-align: center;
@@ -18,6 +19,7 @@ const GlobalStyle = createGlobalStyle`
 function App() {
   const [colorSelected, setColorSelected] = useState(allColors.colors[0]);
   const [tasks, setTasks] = useState([]);
+  const inputTitle = useRef(null);
 
   const createNewTask = (title) => {
     const newTask = {
@@ -62,14 +64,19 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    inputTitle.current.focus();
+  }, []);
+
   return (
     <>
       <GlobalStyle />
-      <h1>To do list</h1>
+      <h1>To Do List</h1>
       <FormTask
         handleChangeColor={handleChangeColor}
         handleSubmit={handleSubmit}
         colorSelected={colorSelected}
+        ref={inputTitle}
       />
       {tasks.length === 0 && <p>Not tasks yet!</p>}
       <div>
